@@ -3,7 +3,7 @@
     <table style="width:240px">
         <tr>
             <td>
-                <?php echo CHtml::form('/authoring/ajaxupdate', 'post'); ?>
+                <?php echo CHtml::form(Yii::app()->createUrl('/authoring/ajaxupdate/'), 'post'); ?>
                     <table>
                         <tr>
                             <td colspan="2"><b>Option Lists</b></td>
@@ -22,7 +22,13 @@
                                     );
                                 ?>
                             </td>
-                            <td><a href="/authoring/ajaxdelete?AnswerList[id]=<?php echo $list->id; ?>">delete</a></td>
+
+
+			    <td>
+				<?php
+					echo CHtml::link('delete', $this->createUrl("/authoring/ajaxdelete", array("AnswerList[id]"=>$list->id)));
+        	    		?>		
+			</td>
                         </tr>
                         <?php endforeach; ?>
                         <tr>
