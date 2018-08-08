@@ -38,9 +38,16 @@
                         <td><input name="key" type="text" size="20" /></td>
                         <td><input name="value" type="text" size="5" /></td>
                         <td>
+
+<!-- creating ajaxupdate-Url -->
+
+<?php
+Yii::app()->clientScript->registerScript('helpers', '
+        ajaxupdateUrl = '.CJSON::encode(Yii::app()->createUrl('/authoring/ajaxupdate')).';
+');?>
                         <?php
                             echo CHtml::button("Add", array(
-                                "onclick"=>'js:$.get("/authoring/ajaxupdate", $("#newOptionForm").serialize(), function(data){$("#formOptionList").html(data);})'
+                                "onclick"=>'js:$.get(ajaxupdateUrl, $("#newOptionForm").serialize(), function(data){$("#formOptionList").html(data);})'
                             ));
                         ?>
 
