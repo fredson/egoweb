@@ -1,7 +1,10 @@
 <div class="view" style="width:360px;float:left;">
 <h2><?php echo Study::getName($studyId); ?></h2>
 
-<h3><a href="/interview/<?php echo $studyId; ?>#/page/0">Start new interview</a></h3>
+
+							  <h3><?php
+							     echo CHtml::link('Start new interview', $this->createUrl("/interview/$studyId#/page/0"));
+							  ?></h3>
 
 <h3>Continue interview</h3>
 <?php
