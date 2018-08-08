@@ -59,7 +59,10 @@
 							<span class="fui-list"></span>
 						</a>
 						<ul class="dropdown-menu">
-							<li><a href="/interview">Interviewing</a>
+							<li>
+							  <?php
+							     echo CHtml::link('Interviewing', $this->createUrl("/interview"));
+							  ?>
 								<ul>
 									<?php foreach($studies as $data): ?>
 									<li>
@@ -69,8 +72,11 @@
 								</ul>
 							</li>
 							<?php if(Yii::app()->user->isAdmin): ?>
-							<li><a href="/authoring">Authoring</a>
-								<ul>
+							<li>
+							  <?php
+							     echo CHtml::link('Authoring', $this->createUrl("/authoring"));
+							  ?>
+							  <ul>
 									<?php foreach($studies as $data): ?>
 									<li>
 									<?php echo CHtml::link(CHtml::encode($data->name), array('/authoring/edit', 'id'=>$data->id)); ?>
@@ -78,7 +84,10 @@
 									<?php endforeach; ?>
 								</ul>
 							</li>
-							<li><a href="/data">Data Processing</a>
+							<li>
+							  <?php
+							     echo CHtml::link('Data Processing', $this->createUrl("/data"));
+							  ?>
 								<ul>
 									<?php foreach($studies as $data): ?>
 									<li>
@@ -87,14 +96,29 @@
 									<?php endforeach; ?>
 								</ul>
 							</li>
-							<li><a href="/archive">Archive</a></li>
-							<li><a href="/importExport">Import & Export Studies</a></li>
+							<li>
+							  <?php
+							     echo CHtml::link('Archive', $this->createUrl("/archive"));
+							  ?></li>
+							<li>
+							  <?php
+							     echo CHtml::link('Import &amp; Export Studies', $this->createUrl("/importExport"));
+							  ?></li>
 							<?php endif; ?>
 							<?php if(Yii::app()->user->isSuperAdmin): ?>
-							<li><a href="/admin/user">User Admin</a>
+							<li>
+							  <?php
+							     echo CHtml::link('User Admin', $this->createUrl("/admin/user"));
+							  ?>
 							<?php endif; ?>
-							<li><a href="/mobile">Mobile</a>
-							<li><a href="/site/logout">Log Out</a>
+							<li>
+							  <?php
+							     echo CHtml::link('Mobile', $this->createUrl("/mobile"));
+							  ?>
+							<li>
+							  <?php
+							     echo CHtml::link('Log out', $this->createUrl("/logout"));
+							  ?>
 						</ul>
 					</li>
 				</ul>
@@ -107,7 +131,10 @@
 					</li>
 				</ul>
 				<?php endif; ?>
-				<a class="titlelink" href="/admin">EgoWeb 2.0</a><span class="title hidden-xs"><?php echo CHtml::encode($this->pageTitle); ?></span><?php if(!Yii::app()->user->isGuest): ?><span class="title hidden-xs" id="questionTitle"></span><?php endif; ?>
+							  <?php
+							     echo CHtml::link('EgoWeb 2.0', $this->createUrl("/admin"), array('class'=>'titlelink'));
+							  ?>
+				<span class="title hidden-xs"><?php echo CHtml::encode($this->pageTitle); ?></span><?php if(!Yii::app()->user->isGuest): ?><span class="title hidden-xs" id="questionTitle"></span><?php endif; ?>
 
 				<ul id="navbox" class="nav navbar-nav navbar-right">
 					<li id="questionMenu" class="dropdown hidden">
