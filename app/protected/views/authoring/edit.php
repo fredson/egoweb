@@ -143,7 +143,10 @@ function deleteAlterList(studyId){
     </div>
 </div>
 
+
+
 <div class="form-group">
+
 
 	<div class="col-sm-6">
 		<?php echo $form->labelEx($model,'introduction'); ?>
@@ -264,13 +267,21 @@ function deleteAlterList(studyId){
 	<div class="buttons col-sm-12">
     <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array("class"=>"btn btn-primary btn-sm pull-right",)); ?>
 
+
+<!-- creating deleteUrl -->
+<?php
+Yii::app()->clientScript->registerScript('helpers', '
+	deleteUrl = '.CJSON::encode(Yii::app()->createUrl('/authoring/delete/'.$model->id)).';
+');?>
+
+
 	<?php $this->endWidget(); ?>
 	<?php if(!$model->isNewRecord): ?>
 		<?php echo CHtml::button(
 			"Delete",
 			array(
 				"class"=>"btn btn-danger btn-sm pull-left",
-				"onclick"=>"js:if(confirm('Are you sure you want to delete this study?')){document.location.href='/authoring/delete/".$model->id. "'}"
+				"onclick"=>"js:if(confirm('Are you sure you want to delete this study?')){document.location.href=deleteUrl}"
 			)
 		); ?>
 	<?php endif; ?>
